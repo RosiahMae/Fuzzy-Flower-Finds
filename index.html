@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fuzzy Flower Finds</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* Basic Reset & Fonts */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #fff0f3;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      background-color: #ebacb1;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      width: 55px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      color: white;
+      font-size: 1.8rem;
+      margin-left: 12px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav {
+  position: relative;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 24px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hide nav links on mobile by default */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 720px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #ebacb1;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 150px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+}
+
+
+    nav a:hover {
+      color: #7f475c;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('bg flower.png') center/cover no-repeat;
+      color: white;
+      padding: 140px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(235, 172, 177, 0.6);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .hero-logo {
+      width: 270px;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .hero h2 {
+      font-size: 3.2rem;
+      margin-bottom: 10px;
+      color: #ebacb1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: auto;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 28px;
+      background-color: #ebacb1;
+      color: white;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 3px 12px rgba(235, 172, 177, 0.7);
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #d99bb1;
+    }
+
+    /* Section Headings */
+    section h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin: 45px 0 25px;
+      color: #7f475c;
+      text-shadow: 1px 1px 2px rgba(235, 172, 177, 0.8);
+    }
+
+    /* Gallery Section */
+    #gallery {
+      padding: 0 20px 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 280px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(235, 172, 177, 0.9);
+    }
+
+    /* About Section */
+    #about {
+      max-width: 800px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      font-size: 1.15rem;
+      color: #5c3a42;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #ebacb1;
+      color: white;
+      text-align: center;
+      padding: 18px 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: inset 0 3px 8px rgba(0,0,0,0.1);
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media(max-width: 720px) {
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .hero-logo {
+        width: 180px;
+      }
+      .gallery img {
+        width: 90vw;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex; align-items:center;">
+    <img src="logo.png" alt="Fuzzy Flower Finds Logo" />
+    <h1>Fuzzy Flower Finds</h1>
+  </div>
+  
+  <nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="zoom-in" data-aos-duration="1500">
+      <img src="logo.png" alt="Fuzzy Flower Finds Logo" class="hero-logo" />
+      <h2>Welcome to Our Blooming World</h2>
+      <p>Crafting excellence from simple wires — 100% handmade flower crafts made with love, dedication, and pure passion.</p>
+      <a href="#order" class="btn">Order Now 💐</a>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p>Welcome to Fuzzy Flower Finds! We specialize in handmade flower crafts that bring joy and color to your space. Each flower is carefully crafted by <strong>Rose Anne M. Alconga</strong>, turning wire and fabric into beautiful tulips, sunflowers, and more. Perfect for gifts or décor!</p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" data-aos="fade-up">
+    <h2>Our Flower Creations</h2>
+    <div class="gallery">
+      <img src="flower 1.png" alt="Tulips" loading="lazy" />
+      <img src="flower 2.png" alt="Crafts" loading="lazy" />
+      <img src="https://scontent.fmnl30-3.fna.fbcdn.net/v/t39.30808-6/475934399_122138522906517417_8857906525241505924_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEZ-weEMSAKbwSdYiC0YS95Z_9U6yzlr8Bn_1TrLOWvwCVY5hoBP8RXL71GaIh_ZFr4IW5tz0pUHL423wkJyUxA&_nc_ohc=VJWip_s1j2QQ7kNvwEPIb2l&_nc_oc=AdkqO3evATwCWs6DxFwcVX2Q2Xx4xdf8vjIWfQU2xd4PTvKhDr0Mdaqr832Psrht76w&_nc_zt=23&_nc_ht=scontent.fmnl30-3.fna&_nc_gid=znfrJbzIB2kaQ7_vcOsMpA&oh=00_AfKehU68cKbfwBbNM_Mt0-hBNUfFCXNvQ0B9k4Mg_CoDcQ&oe=68300248" alt="Roses" loading="lazy" />
+      <img src="https://scontent.fmnl30-1.fna.fbcdn.net/v/t39.30808-6/480324841_122141082380517417_2433394101532513457_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFUkqztmqyJEWnxHz8IUtc_PQ61zmNnXFI9DrXOY2dcUhJV_jcxa8D7pPh1IVY-WGzBrHg7zV5CaMOa6kFc-NX5&_nc_ohc=sBug1OwmQEkQ7kNvwFi-OTo&_nc_oc=AdkWsAMUQZZem3owOJEdytzluTdyy4pkTJgI74MLYET6FSQpBGiopSqBMjwNgS_zw0s&_nc_zt=23&_nc_ht=scontent.fmnl30-1.fna&_nc_gid=5tlGjtDeTcJqQKDgKvhIYA&oh=00_AfKwngRkDlpwMnXceUjOH1lpb49YeK2xWo6nHxyPUEaKoQ&oe=68301917" alt="Sunflowers" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- Order Section (placeholder) -->
+  <section id="order" data-aos="fade-up" style="text-align:center; margin: 50px 20px;">
+    <h2>Place Your Order</h2>
+    <p>Send us a message on Facebook or Instagram to order your beautiful handmade flower crafts!</p>
+    <a href="https://www.facebook.com/profile.php?id=61565522519486" target="_blank" class="btn">Order on Facebook</a>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up" style="text-align:center; margin: 50px 20px;">
+    <h2>Contact Us</h2>
+    <p>Email: fuzzyflowerfinds@example.com</p>
+    <p>Phone: +63 912 345 6789</p>
+    <p>Follow us on social media for updates and new designs!</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Fuzzy Flower Finds. All Rights Reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+</script>
+
+    <script>
+        document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+});
+    </script>
+</body>
+</html>
