@@ -7,120 +7,68 @@
   <link rel="icon" type="image/png" href="logo.png" />
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
-    /* Basic Reset & Fonts */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background: #fff0f3;
-      color: #333;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    header {
-      background-color: #ebacb1;
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    header img {
-      width: 55px;
-      height: auto;
-      border-radius: 50%;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    }
-
-    header h1 {
-      color: white;
-      font-size: 1.8rem;
-      margin-left: 12px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 25px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-    nav {
-  position: relative;
+/* Basic Reset & Fonts */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 28px;
-  height: 24px;
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.menu-toggle span {
-  width: 100%;
-  height: 3px;
-  background-color: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Hide nav links on mobile by default */
-.nav-links {
+body {
+  background: #ffc7d200;
+  color: #5c3a42;
+  line-height: 1.6;
+  min-height: 100vh;
   display: flex;
-  gap: 25px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Responsive for mobile */
-@media (max-width: 720px) {
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #ebacb1;
-    position: absolute;
-    top: 55px;
-    right: 0;
-    width: 150px;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-links a {
-    padding: 12px 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-  }
-
-  .nav-links a:last-child {
-    border-bottom: none;
-  }
+/* Header */
+header {
+  background-color: #f7d1d9; /* softer pink */
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(245, 182, 196, 0.7);
+  border-bottom: 2px solid #f1a5b6;
 }
 
+header img {
+  width: 55px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(241, 165, 182, 0.7);
+}
 
-    nav a:hover {
-      color: #7f475c;
-    }
+header h1 {
+  color: #7f475c;
+  font-size: 1.8rem;
+  margin-left: 12px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px #f7d1d9;
+}
 
-    /* Hero Section */
-    .hero {
+nav a {
+  color: #7f475c;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #e5769e;
+}
+
+/* Menu toggle - keep as is */
+.menu-toggle span {
+  background-color: #7f475c;
+}
+
+/* Hero Section */
+.hero {
       background: url('bg flower.png') center/cover no-repeat;
       color: white;
       padding: 140px 20px;
@@ -131,138 +79,164 @@
       position: relative;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(235, 172, 177, 0.6);
-      z-index: 0;
-    }
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(247, 209, 217, 0.85);
+  z-index: 0;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 700px;
-    }
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 700px;
+}
 
-    .hero-logo {
-      width: 270px;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
+.hero-logo {
+  width: 270px;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(247, 209, 217, 0.8);
+}
 
-    .hero h2 {
-      font-size: 3.2rem;
-      margin-bottom: 10px;
-      color: #ebacb1;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
+.hero h2 {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+  color: #ac5e74;
+  text-shadow: 2px 2px 6px #f9d2da;
+}
 
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: auto;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
+.hero p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: auto;
+  color: #7f475c;
+  text-shadow: 1px 1px 3px #f7d1d9;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 28px;
-      background-color: #ebacb1;
-      color: white;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-decoration: none;
-      box-shadow: 0 3px 12px rgba(235, 172, 177, 0.7);
-      transition: background-color 0.3s ease;
-    }
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background-color: #f7a7b9;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(247, 167, 185, 0.9);
+  transition: background-color 0.3s ease;
+}
 
-    .btn:hover {
-      background-color: #d99bb1;
-    }
+.btn:hover {
+  background-color: #d07b91;
+}
 
-    /* Section Headings */
-    section h2 {
-      text-align: center;
-      font-size: 2.8rem;
-      margin: 45px 0 25px;
-      color: #7f475c;
-      text-shadow: 1px 1px 2px rgba(235, 172, 177, 0.8);
-    }
+/* Alternating Section Backgrounds */
+section:nth-of-type(odd) {
+  background-color: #fff0f3; /* very pale pink */
+  padding: 50px 20px;
+}
 
-    /* Gallery Section */
-    #gallery {
-      padding: 0 20px 60px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+section:nth-of-type(even) {
+  background-color: #fde9ec; /* soft pastel peach-pink */
+  padding: 50px 20px;
+}
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+/* Section Headings */
+section h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  color: #ac5e74;
+  text-shadow: 1px 1px 3px #f9d2da;
+  font-weight: 700;
+}
 
-    .gallery img {
-      width: 280px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
+/* Gallery Section */
+#gallery {
+  max-width: 1000px;
+  margin: 0 auto 60px;
+}
 
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 18px rgba(235, 172, 177, 0.9);
-    }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
 
-    /* About Section */
-    #about {
-      max-width: 800px;
-      margin: 40px auto 80px;
-      padding: 0 20px;
-      font-size: 1.15rem;
-      color: #5c3a42;
-      line-height: 1.7;
-      text-align: center;
-    }
+.gallery img {
+  width: 280px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(244, 182, 196, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
 
-    /* Footer */
-    footer {
-      background-color: #ebacb1;
-      color: white;
-      text-align: center;
-      padding: 18px 10px;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: inset 0 3px 8px rgba(0,0,0,0.1);
-      margin-top: auto;
-    }
+.gallery img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 10px 30px rgba(244, 135, 158, 0.95);
+}
 
-    /* Responsive */
-    @media(max-width: 720px) {
-      .hero h2 {
-        font-size: 2.2rem;
-      }
-      .hero-logo {
-        width: 180px;
-      }
-      .gallery img {
-        width: 90vw;
-        height: auto;
-      }
-    }
+/* About Section */
+#about {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  font-size: 1.2rem;
+  color: #7f475c;
+  line-height: 1.8;
+  text-align: center;
+  font-style: italic;
+  font-weight: 500;
+}
+
+
+
+
+/* Inquiries Section */
+#inquiries {
+  max-width: 600px;
+  margin: 0 auto 80px;
+  font-size: 1.1rem;
+  color: #7f475c;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  background-color: #f7d1d9;
+  color: #7f475c;
+  text-align: center;
+  padding: 18px 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: inset 0 3px 8px rgba(247, 209, 217, 0.7);
+  margin-top: auto;
+}
+
+/* Responsive */
+@media(max-width: 720px) {
+  .hero h2 {
+    font-size: 2.4rem;
+  }
+  .hero-logo {
+    width: 180px;
+  }
+  .gallery img {
+    width: 90vw;
+    height: auto;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -283,7 +257,7 @@
       <a href="#home">Home</a>
       <a href="#gallery">Gallery</a>
       <a href="#order">Order</a>
-      <a href="#contact">Contact</a>
+      <a href="#inquiries">inquiries</a>
     </div>
   </nav>
 </header>
@@ -295,7 +269,7 @@
       <img src="logo.png" alt="Fuzzy Flower Finds Logo" class="hero-logo" />
       <h2>Welcome to Our Blooming World</h2>
       <p>Crafting excellence from simple wires — 100% handmade flower crafts made with love, dedication, and pure passion.</p>
-      <a href="#order" class="btn">Order Now 💐</a>
+      <a href="#inquiries" class="btn">Inquiries Now! 💐</a>
     </div>
   </section>
 
@@ -316,13 +290,6 @@
     </div>
   </section>
 
-  <!-- Order Section (placeholder) -->
-  <section id="order" data-aos="fade-up" style="text-align:center; margin: 50px 20px;">
-    <h2>Place Your Order</h2>
-    <p>Send us a message on Facebook or Instagram to order your beautiful handmade flower crafts!</p>
-    <a href="https://www.facebook.com/profile.php?id=61565522519486" target="_blank" class="btn">Order on Facebook</a>
-  </section>
-
   <!-- Contact Section -->
   <section id="contact" data-aos="fade-up" style="text-align:center; margin: 50px 20px;">
     <h2>Contact Us</h2>
@@ -331,9 +298,50 @@
     <p>Follow us on social media for updates and new designs!</p>
   </section>
 
-  <footer>
+  
+  
+
+<!-- Inquiries Section (continued) -->
+<section id="inquiries" data-aos="fade-up" style="margin: 50px 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+  <h2>Inquiries Now</h2>
+  <p>If you have questions or want to place a custom order, please send us a message below!</p>
+  <p>Or visit our <a href="https://www.facebook.com/profile.php?id=61565522519486" target="_blank" rel="noopener noreferrer" style="color: #ebacb1; font-weight: 700;">FB page "Fuzzy Flower Finds"</a></p>
+  
+  <form id="inquiry-form" style="display: flex; flex-direction: column; gap: 15px;">
+    <label for="name" style="font-weight: 600; color: #7f475c;">Your Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required style="padding: 8px; border-radius: 8px; border: 1px solid #ebacb1;">
+    
+    <label for="email" style="font-weight: 600; color: #7f475c;">Email Address:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required style="padding: 8px; border-radius: 8px; border: 1px solid #ebacb1;">
+    
+    <label for="message" style="font-weight: 600; color: #7f475c;">Your Message:</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your inquiry here..." required style="padding: 8px; border-radius: 8px; border: 1px solid #ebacb1; resize: vertical;"></textarea>
+    
+    <button type="submit" class="btn" style="align-self: center; width: 150px;">Send Message</button>
+  </form>
+</section>
+
+
+
+
+<footer>
+
     &copy; 2025 Fuzzy Flower Finds. All Rights Reserved.
   </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  // Simple form submission alert (replace with backend call)
+  document.getElementById('inquiry-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Thank you for your inquiry! We will get back to you soon.');
+    this.reset();
+  });
+</script>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -358,3 +366,4 @@
     </script>
 </body>
 </html>
+
